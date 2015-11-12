@@ -10,8 +10,6 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TemporalType;
@@ -24,7 +22,6 @@ import rental.ReservationConstraints;
 import rental.ReservationException;
 
 @Stateful
-@TransactionManagement(TransactionManagementType.BEAN)
 public class CarRentalSession implements CarRentalSessionRemote {
 
     @PersistenceContext
@@ -88,28 +85,13 @@ public class CarRentalSession implements CarRentalSessionRemote {
     public List<Reservation> confirmQuotes() throws ReservationException {
         List<Reservation> done = new LinkedList<Reservation>();
         CarRentalCompany company;
-        UserTransaction utx = context.getUserTransaction();
         try {
-            utx.begin();
             for (Quote quote : quotes) {
                 company = (CarRentalCompany) em.find(CarRentalCompany.class, quote.getRentalCompany());
                 done.add(company.confirmQuote(quote));
             }
-            utx.commit();
         } catch (Exception e) {
-            try {
-                utx.rollback();
-                
-            }
-            catch (Exception e2) {
-                /*
-                if rollback fails manually roll back
-                */
-                for(Reservation r : done) {
-                    company = (CarRentalCompany) em.find(CarRentalCompany.class, r.getRentalCompany());
-                    company.cancelReservation(r);
-                }
-            }
+            context.setRollbackOnly();
             throw new ReservationException(e);
         }
         return done;
