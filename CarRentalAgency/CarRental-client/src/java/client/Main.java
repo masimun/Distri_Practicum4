@@ -2,14 +2,16 @@ package client;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.naming.InitialContext;
 import rental.CarType;
+import rental.Reservation;
 import rental.ReservationConstraints;
 import session.CarRentalSessionRemote;
 import session.ManagerSessionRemote;
 
-public class Main extends AbstractScriptedTripTest<CarRentalSessionRemote, ManagerSessionRemote> {
+public class Main extends AbstractTestManagement<CarRentalSessionRemote, ManagerSessionRemote> {
 
     public Main(String scriptFile) {
         super(scriptFile);
@@ -66,10 +68,6 @@ public class Main extends AbstractScriptedTripTest<CarRentalSessionRemote, Manag
         session.createQuote(carRentalName, new ReservationConstraints(start, end, carType));
     }
 
-    @Override
-    protected void confirmQuotes(CarRentalSessionRemote session, String name) throws Exception {
-        session.confirmQuotes();
-    }
     
     @Override
     protected int getNumberOfReservationsBy(ManagerSessionRemote ms, String renterName) throws Exception {
@@ -81,12 +79,12 @@ public class Main extends AbstractScriptedTripTest<CarRentalSessionRemote, Manag
         return ms.getNumberOfReservations(company, carType);
     }
 
-    @Override
+    
     protected CarType getMostPopularCarTypeIn(ManagerSessionRemote ms, String carRentalCompanyName) throws Exception {
         return ms.getMostPopularCarType(carRentalCompanyName);
     }
 
-    @Override
+   
     protected Set<String> getBestClients(ManagerSessionRemote ms) throws Exception {
         return new HashSet<String>(ms.getBestClients());
     }
@@ -110,4 +108,15 @@ public class Main extends AbstractScriptedTripTest<CarRentalSessionRemote, Manag
     protected void createCar(ManagerSessionRemote ms, String company,int amount, CarType type) {
         ms.addCar(company, amount, type);
     }
+
+    @Override
+    protected String getMostPopularCarRentalCompany(ManagerSessionRemote ms) throws Exception {
+        return ms.getMostPopularCarRentalCompany();
+    }
+
+    @Override
+    protected List<Reservation> confirmQuotes(CarRentalSessionRemote session, String name) throws Exception {
+        return session.confirmQuotes();
+    }
+
 }

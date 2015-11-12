@@ -36,7 +36,9 @@ import javax.persistence.Transient;
     @NamedQuery(name="rental.CarRentalCompany.getAllCarTypesByCompany",
                 query="SELECT t FROM CarRentalCompany r, IN (r.carTypes) t WHERE r.name = :company"),
     @NamedQuery(name="rental.CarRentalCompany.getCheapestCarType",
-                query="SELECT ct.name FROM Car c JOIN c.type ct LEFT OUTER JOIN c.reservations res WHERE :end <= res.startDate OR res.endDate <= :start OR (res.startDate IS NULL AND res.endDate IS NULL) ORDER BY ct.rentalPricePerDay ")
+                query="SELECT ct.name FROM Car c JOIN c.type ct LEFT OUTER JOIN c.reservations res WHERE :end <= res.startDate OR res.endDate <= :start OR (res.startDate IS NULL AND res.endDate IS NULL) ORDER BY ct.rentalPricePerDay "),
+    @NamedQuery(name="rental.CarRentalCompany.getMostPopularCarRentalCompanies",
+                query="SELECT res.rentalCompany FROM Reservation res GROUP BY res.rentalCompany ORDER BY COUNT(res.rentalCompany) DESC")
     }) 
 
 
