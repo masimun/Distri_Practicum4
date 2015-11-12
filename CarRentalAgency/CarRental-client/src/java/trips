@@ -1,39 +1,37 @@
 Jos BS
 Jos BA 5/11/2012 9/11/2012
-Jos BB 5/11/2012 6/11/2012 Premium Hertz
-Jos BB 6/11/2012 7/11/2012 Premium Hertz
-Jos BB 8/11/2012 9/11/2012 MPV Hertz
+Jos BB 5/11/2012 6/11/2012 Special Hertz
+Jos BB 6/11/2012 7/11/2012 Sedan Dockx
+Jos BB 8/11/2012 9/11/2012 Premium Hertz
 Jos BF
 Fil BS 
 Fil BB 5/11/2012 6/11/2012 Premium Hertz
-Fil BB 6/11/2012 7/11/2012 Mini Hertz
-Fil BB 8/11/2012 9/11/2012 MPV Hertz
+Fil BB 6/11/2012 7/11/2012 Sedan Dockx
+Fil BB 8/11/2012 9/11/2012 Standard Hertz
 Fil BF
 Eric BS
-Eric BB 5/11/2012 6/11/2012 Special Hertz
-Eric BB 6/11/2012 7/11/2012 MPV Hertz
+Eric BB 6/11/2012 7/11/2012 Mini Hertz
+Eric BB 7/11/2012 8/11/2012 Special Hertz
 Eric BF
-Eric MA 5/11/2012 7/11/2012 Mini
+Eric MA 6/11/2012 7/11/2012 Mini
 Tom BS
 Tom BBc 5/11/2012 6/11/2012 Special Hertz
 Tom BB 6/11/2012 7/11/2012 Mini Hertz
 Tom BF
-Tom BMR
 Will BS
 Fred BS
-Will MA 5/11/2012 7/11/2012 Compact
+Will BB 5/11/2012 6/11/2012 SUV Dockx
 Will BB 6/11/2012 7/11/2012 Sedan Dockx
-Will BB 5/11/2012 6/11/2012 Break Dockx
 Fred BA 6/11/2012 7/11/2012
 Fred BB 6/11/2012 7/11/2012 Sedan Dockx
-Fred BB 5/11/2012 6/11/2012 Break Dockx
+Fred BB 8/11/2012 9/11/2012 Eco Dockx
 Fred BF
+Will MA 6/11/2012 7/11/2012 Compact
 Will BFc
-Fred BMR
-Will BMR
-Hertz BM Premium:3 MPV:3 Special:1 Mini:2
-Dockx BM Top:0 Break:1 Sedan:1
-Hertz MF Premium/MPV
-Dockx MF Break/Sedan
+Fil BMR
+Hertz BM Premium:2 Special:2 Mini:2 Standard:1 Compact:0 Economy:0 MPV:0
+Dockx BM Sedan:3 Eco:1 SUV:0 Compact:0 Break:0 Top:0
+Hertz MF Premium/Special/Mini
+Dockx MF Sedan
 Jos/Fil MB
 Hertz MC
