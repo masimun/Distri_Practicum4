@@ -166,7 +166,7 @@ public abstract class AbstractTestManagement<ReservationSession, ManagerSession>
     private void checkPopularCrc(String mostPopularCrcName) throws Exception {
         ManagerSession rental = getNewManagerSession("someName", "someCrc");
         String favorite = getMostPopularCarRentalCompany(rental);
-        if(mostPopularCrcName.equals(favorite)) {
+        if(mostPopularCrcName.toLowerCase().equals(favorite.toLowerCase())) {
             System.out.println("Correct most popular car rental company: "+ favorite);
         } else {
             System.err.println("Incorrect most popular car rental company: "+ favorite);
