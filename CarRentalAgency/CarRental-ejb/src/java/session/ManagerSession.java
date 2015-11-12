@@ -23,7 +23,7 @@ import rental.Reservation;
 public class ManagerSession implements ManagerSessionRemote {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
 
     @Override
     public Set<String> getAllRentalCompanies() {

@@ -12,6 +12,10 @@ public class Reservation extends Quote {
   
     private int carId;
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+            
     /***************
      * CONSTRUCTOR *
      ***************/

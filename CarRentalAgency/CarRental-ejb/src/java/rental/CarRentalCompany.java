@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import static javax.persistence.FetchType.LAZY;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -49,9 +50,9 @@ public class CarRentalCompany {
     private static Logger logger = Logger.getLogger(CarRentalCompany.class.getName());
     @Id
     private String name;
-    @OneToMany(cascade = {CascadeType.REFRESH,CascadeType.PERSIST})
+    @OneToMany(cascade = {CascadeType.REMOVE,CascadeType.PERSIST}, fetch = LAZY)
     private List<Car> cars;
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(fetch = LAZY)
     private Set<CarType> carTypes;
     
     /***************

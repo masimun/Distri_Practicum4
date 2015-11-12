@@ -1,27 +1,30 @@
 package rental;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
-public class Car {
+public class Car implements Serializable {
     
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private int id;
     
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST},fetch =EAGER)
     private CarType type;
     
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
+    @OneToMany(cascade = {CascadeType.REMOVE,CascadeType.PERSIST},fetch=LAZY)
     private Set<Reservation> reservations;
 
     /***************

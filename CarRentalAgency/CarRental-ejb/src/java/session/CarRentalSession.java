@@ -1,14 +1,15 @@
 package session;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
-import javax.ejb.EJBContext;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
@@ -27,10 +28,10 @@ import rental.ReservationException;
 public class CarRentalSession implements CarRentalSessionRemote {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
     
     @Resource
-    private EJBContext context;
+    private SessionContext context;
     
     private String renter;
     private List<Quote> quotes = new LinkedList<Quote>();
@@ -83,6 +84,7 @@ public class CarRentalSession implements CarRentalSessionRemote {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public List<Reservation> confirmQuotes() throws ReservationException {
         List<Reservation> done = new LinkedList<Reservation>();
         CarRentalCompany company;
